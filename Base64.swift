@@ -3,12 +3,12 @@ import Foundation
 
 /// URI Safe base64 encode
 func base64encode(_ input:Data) -> String {
-  let data = input.base64EncodedData(NSData.Base64EncodingOptions(rawValue: 0))
+  let data = input.base64EncodedData(Data.Base64EncodingOptions(rawValue: 0))
   let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) as! String
   return string
-    .replacingOccurrences(of: "+", with: "-", options: NSString.CompareOptions(rawValue: 0), range: nil)
-    .replacingOccurrences(of: "/", with: "_", options: NSString.CompareOptions(rawValue: 0), range: nil)
-    .replacingOccurrences(of: "=", with: "", options: NSString.CompareOptions(rawValue: 0), range: nil)
+    .stringByReplacingOccurrencesOfString("+", withString: "-", options: NSString.CompareOptions(rawValue: 0), range: nil)
+    .stringByReplacingOccurrencesOfString("/", withString: "_", options: NSString.CompareOptions(rawValue: 0), range: nil)
+    .stringByReplacingOccurrencesOfString("=", withString: "", options: NSString.CompareOptions(rawValue: 0), range: nil)
 }
 
 /// URI Safe base64 decode
