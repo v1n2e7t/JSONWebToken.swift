@@ -61,7 +61,8 @@ public enum Algorithm : CustomStringConvertible {
       } catch {
         result = []
       }
-      return base64encode(NSData.withBytes(result))
+        //return base64encode(NSData.withBytes(result))
+        return base64encode(Data(bytes: result))
     }
 
     switch self {
